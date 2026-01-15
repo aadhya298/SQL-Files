@@ -19,6 +19,7 @@ conn.execute("INSERT OR IGNORE INTO MATCH VALUES(2,9,'CSK',50,102)")
 conn.execute("INSERT OR IGNORE INTO MATCH VALUES(3,9,'RCB',8,103)")
 conn.execute("INSERT OR IGNORE INTO MATCH VALUES(4,9,'MI',30,101)")
 conn.execute("INSERT OR IGNORE INTO MATCH VALUES(5,9,'KKR',22,104)")
+conn.commit()
 
 df=pd.read_sql("SELECT * FROM MATCH", conn)
 print(df)

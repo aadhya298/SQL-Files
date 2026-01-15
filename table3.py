@@ -3,7 +3,7 @@ import pandas as pd
 
 conn= sqlite3.connect("d.db")
 print("Connection established")
-conn.commit()
+
 
 conn.execute("""
     CREATE TABLE IF NOT EXISTS CLASS(
@@ -18,6 +18,7 @@ conn.execute("INSERT OR IGNORE INTO CLASS(ROLL_NO,NAME,EMAIL_ID) VALUES(1,'AADHY
 conn.execute("INSERT OR IGNORE INTO CLASS(ROLL_NO,NAME,EMAIL_ID) VALUES(2,'ANAMIKA','anamika.22@rediff.com')")
 conn.execute("INSERT OR IGNORE INTO CLASS(ROLL_NO,NAME,EMAIL_ID) VALUES(3,'AVNI','avni.41@yahoo.com')")
 conn.execute("INSERT OR IGNORE INTO CLASS(ROLL_NO,NAME,EMAIL_ID) VALUES(4,'SAGAR','sagar.08@rediff.com')")
+conn.commit()
 
 df= pd.read_sql("SELECT * FROM CLASS", conn)
 print(df)
