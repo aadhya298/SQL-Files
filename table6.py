@@ -1,23 +1,25 @@
+import sqlite3
+import pandas as pd
 
-CREATE TABLE City (
+conn= sqlite3.connect("d1.db")
+print("Connection established")
 
-City_Id INTEGER PRIMARY KEY,
+conn.execute("""
+    CREATE TABLE City (
+    City_Id INTEGER PRIMARY KEY,
+    City_Name TEXT NOT NULL
+        );
+    """)
 
-City_Name TEXT NOT NULL
+conn.execute("""
+    CREATE TABLE Venue (
+    Venue_Id INTEGER PRIMARY KEY,
+    Venue_Name TEXT NOT NULL,
+    City_Id INTEGER,
+    FOREIGN KEY (City_Id) 
+    REFERENCES City(City_Id)
 
-);
-
-CREATE TABLE Venue (
-
-Venue_Id INTEGER PRIMARY KEY,
-
-Venue_Name TEXT NOT NULL,
-
-City_Id INTEGER,
-
-FOREIGN KEY (City_Id) REFERENCES City(City_Id)
-
-);
+);""")
 
 CREATE TABLE Team (
 
